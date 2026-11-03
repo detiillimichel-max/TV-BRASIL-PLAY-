@@ -1,0 +1,44 @@
+name: Build TV Programming and Catalogs
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 3 * * *" # 00:15 America/Sao_Paulo (UTC-3)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tv-programming-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build next seven days
+        run: python scripts/build_schedule.py --days 7
+
+      - name: Normalize collected catalog files
+        run: python scripts/normalize_catalog.py
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tv-brasil-play-data
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
