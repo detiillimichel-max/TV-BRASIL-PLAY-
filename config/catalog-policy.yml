@@ -1,0 +1,26 @@
+version: 1
+timezone: America/Sao_Paulo
+deduplication:
+  primary_keys: [source, source_id]
+  fallback_fields: [title, creator]
+  normalize_case: true
+  strip_accents: true
+moderation:
+  require_title: true
+  require_source_id: true
+  require_source_url: true
+  require_https: true
+  require_duration_for_video: true
+  min_duration_seconds: 15
+  max_duration_seconds: 21600
+  reject_explicit_flags: true
+  rights_status_allowed:
+    - verified
+    - public_domain
+    - partner_authorized
+  default_rights_status: review_required
+  publish_only_approved_rights: true
+catalog:
+  max_items_per_source: 500
+  output_file: dist/catalog.json
+  rejected_file: dist/catalog-review.json
