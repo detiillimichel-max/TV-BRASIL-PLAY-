@@ -1,0 +1,253 @@
+{
+  "version": 1,
+  "policy": {
+    "usagePercent": 40,
+    "failClosed": true,
+    "description": "The engine permits at most 40% of each configured provider quota. A quota must be entered using the real limit for the account/plan or an explicitly documented internal cap."
+  },
+  "sources": [
+    {
+      "id": "pexels",
+      "name": "Pexels",
+      "type": "keyed",
+      "env": [
+        "PEXELS_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Enter the actual account/API limits before enabling."
+    },
+    {
+      "id": "pixabay",
+      "name": "Pixabay",
+      "type": "keyed",
+      "env": [
+        "PIXABAY_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Use the current account's documented API quota and caching rules."
+    },
+    {
+      "id": "coverr",
+      "name": "Coverr",
+      "type": "keyed",
+      "env": [
+        "COVERR_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Confirm the active plan quota. COVERR_API_ID is not used by this limiter."
+    },
+    {
+      "id": "vecteezy",
+      "name": "Vecteezy",
+      "type": "keyed",
+      "env": [
+        "VECTEEZY_ACCOUNT_ID",
+        "VECTEEZY_SECRET_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Set limits from the account's actual API plan."
+    },
+    {
+      "id": "twitch",
+      "name": "Twitch",
+      "type": "oauth",
+      "env": [
+        "TWITCH_CLIENT_ID",
+        "TWITCH_CLIENT_SECRET"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Twitch may expose bucket-specific limits in response headers; configure conservative limits and honor those headers in the connector."
+    },
+    {
+      "id": "vimeo",
+      "name": "Vimeo",
+      "type": "oauth",
+      "env": [
+        "VIMEO_ACCESS_TOKEN"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Set the quota for the authenticated Vimeo app/account."
+    },
+    {
+      "id": "tmdb",
+      "name": "TMDB",
+      "type": "keyed",
+      "env": [
+        "TMDB_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Confirm the current account's applicable policy before activation."
+    },
+    {
+      "id": "nasa",
+      "name": "NASA APIs",
+      "type": "keyed",
+      "env": [
+        "NASA_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "The limit depends on DEMO_KEY versus a registered API key."
+    },
+    {
+      "id": "nara",
+      "name": "NARA",
+      "type": "keyed",
+      "env": [
+        "NARA_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Confirm quota and terms for the API endpoint/account used."
+    },
+    {
+      "id": "dpla",
+      "name": "DPLA",
+      "type": "keyed",
+      "env": [
+        "DPLA_API_KEY"
+      ],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Set the documented quota for the issued key."
+    },
+    {
+      "id": "wikimedia",
+      "name": "Wikimedia Commons",
+      "type": "public",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Public does not mean unlimited. Set an internal operating cap based on API etiquette and response headers."
+    },
+    {
+      "id": "internet-archive",
+      "name": "Internet Archive",
+      "type": "public",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Set an internal cap; respect service guidance and back off on 429/503."
+    },
+    {
+      "id": "nasa-image-library",
+      "name": "NASA Image and Video Library",
+      "type": "public",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Treat separately from NASA APIs if it uses a different endpoint or quota."
+    },
+    {
+      "id": "europeana",
+      "name": "Europeana",
+      "type": "public-or-keyed",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Add the API key environment variable if required by the selected endpoint and plan."
+    },
+    {
+      "id": "dvids",
+      "name": "DVIDS",
+      "type": "public-or-keyed",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Confirm authentication and quota for the endpoint used."
+    },
+    {
+      "id": "jamendo",
+      "name": "Jamendo",
+      "type": "external-pwa",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Existing independent PWA; do not modify it. Add only if the PLAY project makes API calls directly."
+    },
+    {
+      "id": "audius",
+      "name": "Audius",
+      "type": "external-pwa",
+      "env": [],
+      "limits": {
+        "hour": null,
+        "day": null,
+        "month": null
+      },
+      "enabled": false,
+      "notes": "Existing independent PWA; do not modify it. Add only if the PLAY project makes API calls directly."
+    }
+  ]
+}
