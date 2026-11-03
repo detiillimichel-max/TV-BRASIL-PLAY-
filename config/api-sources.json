@@ -233,28 +233,32 @@
     {
       "id": "jamendo",
       "name": "Jamendo",
-      "type": "external-pwa",
-      "env": [],
+      "type": "keyed",
+      "env": [
+        "JAMENDO_CLIENT_ID"
+      ],
       "limits": {
         "hour": null,
         "day": null,
         "month": null
       },
       "enabled": false,
-      "notes": "Existing independent PWA; do not modify it. Add only if the PLAY project makes API calls directly."
+      "notes": "Read-only public catalog access uses JAMENDO_CLIENT_ID. OAuth client secret/token are not required for catalog search; keep this source disabled until quota and connector are configured."
     },
     {
       "id": "audius",
       "name": "Audius",
-      "type": "external-pwa",
-      "env": [],
+      "type": "keyed",
+      "env": [
+        "AUDIUS_API_KEY"
+      ],
       "limits": {
         "hour": null,
         "day": null,
         "month": null
       },
       "enabled": false,
-      "notes": "Existing independent PWA; do not modify it. Add only if the PLAY project makes API calls directly."
+      "notes": "Read-only catalog endpoints generally work without credentials; AUDIUS_API_KEY is used for higher rate limits. API Secret and Bearer Token are not needed for public catalog search; keep this source disabled until quota and connector are configured."
     }
   ]
 }
