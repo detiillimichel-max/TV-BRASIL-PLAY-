@@ -1,0 +1,40 @@
+version: 1
+timezone: America/Sao_Paulo
+horizon_days: 7
+weekdays: [monday, tuesday, wednesday, thursday, friday]
+
+# Horários são locais de São Paulo. Os blocos são contínuos e não dependem
+# de usuários conectados. Ajuste a grade aqui, sem alterar o código Python.
+templates:
+  weekdays:
+    - { start: "00:00", end: "06:00", program_id: "cinema-noturno", title: "Cinema da madrugada", category: "filmes", selector: "feature_film" }
+    - { start: "06:00", end: "09:00", program_id: "manha-animada", title: "Manhã animada", category: "desenhos", selector: "family_animation" }
+    - { start: "09:00", end: "12:00", program_id: "series-da-manha", title: "Séries da manhã", category: "series", selector: "episodic_series" }
+    - { start: "12:00", end: "13:00", program_id: "estacao-musical", title: "Estação Musical", category: "musica", selector: "music_rotation" }
+    - { start: "13:00", end: "16:00", program_id: "sessao-da-tarde", title: "Sessão da tarde", category: "filmes", selector: "family_feature" }
+    - { start: "16:00", end: "18:00", program_id: "natureza-e-vida", title: "Natureza & Vida", category: "natureza-vida", selector: "nature_documentary" }
+    - { start: "18:00", end: "20:00", program_id: "series-em-familia", title: "Séries em família", category: "series", selector: "family_series" }
+    - { start: "20:00", end: "22:00", program_id: "grande-cinema", title: "Grande Cinema", category: "filmes", selector: "evening_feature" }
+    - { start: "22:00", end: "23:59", program_id: "documentarios", title: "Documentários", category: "historia-documentarios", selector: "documentary" }
+    - { start: "23:59", end: "24:00", program_id: "virada", title: "Virada da programação", category: "institucional", selector: "station_ident" }
+
+  saturday:
+    - { start: "00:00", end: "07:00", program_id: "cinema-de-sabado-madrugada", title: "Cinema de sábado: madrugada", category: "filmes", selector: "feature_film" }
+    - { start: "07:00", end: "10:00", program_id: "desenhos-especiais", title: "Desenhos especiais", category: "desenhos", selector: "family_animation" }
+    - { start: "10:00", end: "12:00", program_id: "maratona-series", title: "Maratona de séries", category: "series", selector: "series_marathon" }
+    - { start: "12:00", end: "14:00", program_id: "festival-musical", title: "Festival Musical", category: "musica", selector: "music_rotation" }
+    - { start: "14:00", end: "18:00", program_id: "super-sessao", title: "Super Sessão de sábado", category: "filmes", selector: "family_feature" }
+    - { start: "18:00", end: "20:00", program_id: "viagens-culturas", title: "Viagens & Culturas", category: "viagens-culturas", selector: "travel_culture" }
+    - { start: "20:00", end: "23:00", program_id: "estreia-sabado", title: "Especial de sábado", category: "filmes", selector: "evening_feature" }
+    - { start: "23:00", end: "24:00", program_id: "musica-noite", title: "Música da noite", category: "musica", selector: "music_rotation" }
+
+  sunday:
+    - { start: "00:00", end: "07:00", program_id: "cinema-domingo-madrugada", title: "Cinema de domingo: madrugada", category: "filmes", selector: "feature_film" }
+    - { start: "07:00", end: "09:00", program_id: "manha-em-familia", title: "Manhã em família", category: "desenhos", selector: "family_animation" }
+    - { start: "09:00", end: "12:00", program_id: "natureza-domingo", title: "Domingo na Natureza", category: "natureza-vida", selector: "nature_documentary" }
+    - { start: "12:00", end: "13:00", program_id: "musica-domingo", title: "Música de domingo", category: "musica", selector: "music_rotation" }
+    - { start: "13:00", end: "16:00", program_id: "documentario-especial", title: "Documentário especial", category: "historia-documentarios", selector: "documentary" }
+    - { start: "16:00", end: "18:00", program_id: "espaco-ciencia", title: "Espaço & Ciência", category: "espaco-ciencia", selector: "science_space" }
+    - { start: "18:00", end: "20:00", program_id: "historias-e-culturas", title: "Histórias & Culturas", category: "viagens-culturas", selector: "travel_culture" }
+    - { start: "20:00", end: "22:00", program_id: "filme-de-domingo", title: "Filme de domingo", category: "filmes", selector: "family_feature" }
+    - { start: "22:00", end: "24:00", program_id: "documentarios-da-noite", title: "Documentários da noite", category: "historia-documentarios", selector: "documentary" }
