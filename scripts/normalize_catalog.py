@@ -72,6 +72,12 @@ def main():
             reason.append("invalid_source_url")
         if media_url and not valid_https(media_url):
             reason.append("media_url_not_https")
+        thumbnail_url = clean(item.get("thumbnail_url"))
+        if thumbnail_url and not valid_https(thumbnail_url):
+            reason.append("thumbnail_url_not_https")
+        license_url = clean(item.get("license_url"))
+        if license_url and not valid_https(license_url):
+            reason.append("license_url_not_https")
         if rules["require_duration_for_video"] and item.get("media_type") == "video":
             if not isinstance(duration, (int, float)) or duration < rules["min_duration_seconds"] or duration > rules["max_duration_seconds"]:
                 reason.append("invalid_video_duration")
@@ -102,8 +108,9 @@ def main():
             "thumbnail_url": clean(item.get("thumbnail_url")) or None,
             "duration_seconds": duration,
             "license": clean(item.get("license")) or None,
-            "license_url": clean(item.get("license_url")) or None,
+            "license_url": license_url or None,
             "rights_status": rights,
+            "rights_evidence": clean(item.get("rights_evidence")) or None,
             "language": clean(item.get("language")) or None,
             "explicit": bool(item.get("explicit", False)),
             "moderation_status": "approved" if not reason else "review",
