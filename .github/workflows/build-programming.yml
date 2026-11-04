@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Run collector unit tests
+        run: python -m unittest discover -s tests -v
+
       - name: Build next seven days
         run: python scripts/build_schedule.py --days 7
 
