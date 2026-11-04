@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tv-brasil-play.vercel.app/schemas/catalog-item.schema.json",
+  "title": "TV-BRASIL-PLAY Catalog Item",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "source",
+    "source_id",
+    "title",
+    "source_url",
+    "media_type",
+    "rights_status"
+  ],
+  "properties": {
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "creator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "media_type": {
+      "enum": [
+        "video",
+        "audio",
+        "image",
+        "live",
+        "unknown"
+      ]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "media_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "thumbnail_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "duration_seconds": {
+      "type": [
+        "integer",
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "license": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "license_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "rights_status": {
+      "enum": [
+        "verified",
+        "public_domain",
+        "partner_authorized",
+        "review_required",
+        "restricted",
+        "unknown"
+      ]
+    },
+    "rights_evidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "explicit": {
+      "type": "boolean"
+    },
+    "collected_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}
