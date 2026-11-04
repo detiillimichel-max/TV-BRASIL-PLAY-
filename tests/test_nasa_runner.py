@@ -1,5 +1,6 @@
 import os
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -32,17 +33,15 @@ class NasaRunnerSafetyTests(unittest.TestCase):
             events.append("nasa")
             return {"collection": {"items": []}}
 
-        with patch.object(collect_nasa, "reserve_rate_limit", side_effect=reserve):
-            with patch.object(collect_nasa, "fetch_nasa_page", side_effect=fetch):
-                with patch.object(collect_nasa.OUTPUT, "parent", create=True):
-                    # Avoid filesystem output while testing call order.
-                    with patch.object(collect_nasa.Path, "write_text", create=True):
-                        with patch.object(collect_nasa, "OUTPUT") as output:
-                            output.parent.mkdir.return_value = None
-                            output.write_text.return_value = None
-                            collect_nasa.collect("earth", 5)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "nasa_nail.json"
+            with patch.object(collect_nasa, "OUTPUT", output):
+                with patch.object(collect_nasa, "reserve_rate_limit", side_effect=reserve):
+                    with patch.object(collect_nasa, "fetch_nasa_page", side_effect=fetch):
+                        collect_nasa.collect("earth", 5)
 
         self.assertEqual(events, ["rate_limit", "nasa"])
+        self.assertTrue(output.exists())
 
     def test_missing_rate_limit_configuration_blocks(self):
         with patch.dict(os.environ, {"TVBRASIL_RATE_LIMIT_URL": "", "RATE_LIMIT_ADMIN_TOKEN": ""}):
